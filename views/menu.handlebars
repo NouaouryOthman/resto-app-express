@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <nav>
+        <ul>
+            {{#if user}}
+            <li>Bonjour {{user.email}} !</li>
+            <form method="post" action="/logout">
+                <input type="submit" value="Deconnexion" />
+            </form>
+            {{/if}}
+            {{#unless user}}
+            <a href="/login">Connexion</a>
+            {{/unless}}
+        </ul>
+    </nav>
+</div>
+<section>
+    <h2>Menu</h2>
+
+    <ul class="menu">
+        {{#each produit}}
+        <li data-id-produit="{{this.id_produit}}">
+            <div class="nom">{{this.nom}}</div>
+            <div class="prix">{{this.prix}} $</div>
+            <img src="{{this.chemin_image}}" alt="{{this.nom}}">
+            <input type="button" value="Ajouter au panier">
+        </li>
+        {{/each}}
+    </ul>
+</section>
+
+<script type="module" src="./js/menu.js"></script>
